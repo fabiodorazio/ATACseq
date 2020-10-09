@@ -17,7 +17,7 @@ readAlignBAM <- function(x){
   seqinfo(alignment_tn)   = seqinfo(BSgenome.Drerio.UCSC.danRer7)
   alignment_tn = trim(alignment_tn)
   
-  ## select only nucleosomes
+  ## select open chromatin
   open_chromatin <- alignment_tn[width(alignment_tn) < 120]
   Cov <- coverage(open_chromatin) / expected.cov
   
