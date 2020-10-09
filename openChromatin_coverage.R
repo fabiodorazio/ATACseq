@@ -21,5 +21,5 @@ readAlignBAM <- function(x){
   open_chromatin <- alignment_tn[width(alignment_tn) < 120]
   Cov <- coverage(open_chromatin) / expected.cov
   
-  saveRDS(Cov, paste0('~/ATAC_FoldChange_Coverage120', name, '.rds'))
+  saveRDS(Cov, paste0('ATAC_FoldChange_Coverage120', name, '.rds'))
 }
