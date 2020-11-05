@@ -1,3 +1,4 @@
+## read bam files, adjust for Tn5 cut sites and calculate the coverage
 readAlignBAM <- function(x){
   genome.size <- 1.42e9
   name <- strsplit(x, "\\.Fabio")
