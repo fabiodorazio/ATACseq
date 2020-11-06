@@ -24,3 +24,28 @@ readAlignBAM <- function(x){
   
   saveRDS(Cov, paste0('ATAC_FoldChange_Coverage120', name, '.rds'))
 }
+
+## resize to 1bp resolution for Tn5 cut sites
+cov.function <- function(a, resize = 1){
+  #a <- subset(a, width(a) < 120)
+  seqlevels(a) = seqlevels(BSgenome.Drerio.UCSC.danRer7)
+  seqinfo(a)   = seqinfo(BSgenome.Drerio.UCSC.danRer7)
+  a = trim(a)
+  ## remove blacklisted regions
+  a <- subsetByOverlaps(a, blacklist, invert = T)
+  ## Tn5 cut sites: resize = 1
+  a <- resize(a, width = resize, fix = "start", ignore.strand = FALSE)
+
+  a_plus <- a[strand(a) == '+']
+  a_minus <- a[strand(a) == '-']
+
+  genome.size <- 1.42e9
+  expected.cov <- sum(width(a))/genome.size
+  ## select only nucleosomes
+  FoldChange.minus <- GRanges(coverage(a_minus) / expected.cov, strand = '-')
+  FoldChange.plus <- GRanges(coverage(a_plus) / expected.cov, strand = '+')
+  FoldChange.strand <- c(FoldChange.minus, FoldChange.plus)
+  
+  #export.bed(FoldChange, paste0(x, '.bed'))
+  return(FoldChange.strand)
+}
