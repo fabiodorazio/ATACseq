@@ -76,7 +76,6 @@ atac_list <- list(all.peaks.pgc, all.peaks.soma)
   
   return(z)
   
-  #cage_obj_tata <- merge(cage_obj, z, by.x = "cluster", by.y = "sequence", all = TRUE)
 }
 
 atac_list_positions <- lapply(atac_list, .atac_positions)
