@@ -1,7 +1,20 @@
-all.peaks.pgc <- ensembl.ids.atac(pgc.summit)
-all.peaks.soma <- ensembl.ids.atac(soma.summit)
+#' @include dk
+#' @author Fabio M D'Orazio
+#' @description ATAC peak Analysis
 
-atac_list <- list(all.peaks.pgc, all.peaks.soma)
+#####################################################
+### Peak and Average Distance Analysis from ATAC peak summit files ####
+
+library(plyr)
+library(dplyr)
+library(tidyr)
+library(magrittr)
+library(GenomicRanges)
+
+if(!interactive()){
+  all.peaks.pgc <- ensembl.ids.atac(pgc.summit)
+  all.peaks.soma <- ensembl.ids.atac(soma.summit)
+}
 
 ## get peaks coordinates for each promoter
 .atac_positions <- function(y){
@@ -78,4 +91,5 @@ atac_list <- list(all.peaks.pgc, all.peaks.soma)
   
 }
 
+atac_list <- list(all.peaks.pgc, all.peaks.soma)
 atac_list_positions <- lapply(atac_list, .atac_positions)
