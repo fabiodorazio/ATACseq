@@ -1,3 +1,16 @@
+#' @include dk
+#' @author Fabio M D'Orazio
+#' @description ATAC Coverage Analysis
+
+#####################################################
+### Adjust cut sites and calculate Coverage for ATAC sequencing ####
+
+library(plyr)
+library(dplyr)
+library(tidyr)
+library(magrittr)
+library(GenomicRanges)
+
 ## read bam files, adjust for Tn5 cut sites and calculate the coverage
 readAlignBAM <- function(x){
   genome.size <- 1.42e9
