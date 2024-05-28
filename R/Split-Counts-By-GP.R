@@ -1,4 +1,9 @@
-## split counts by Genomic Position
+#' @include dk
+#' @author Fabio M D'Orazio
+#' @description Split read count by Genomic Position
+
+#####################################################
+### split read counts by Genomic Position ####
 
 library(BSgenome.Hsapiens.UCSC.hg19)
 library(GenomicRanges)
@@ -46,4 +51,5 @@ subset.overlap.sample <- function(x,y){
   return(final_merged)
 }
 
+# run function
 binned_tpm1 <- subset.overlap.sample(csv.coord.range, bin100)
