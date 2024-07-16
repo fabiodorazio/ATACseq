@@ -10,6 +10,7 @@ library(dplyr)
 library(tidyr)
 library(magrittr)
 library(GenomicRanges)
+library(GenomicAlignments)
 
 ## read bam files, adjust for Tn5 cut sites and calculate the coverage
 readAlignBAM <- function(x){
