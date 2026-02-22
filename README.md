@@ -19,7 +19,7 @@ The script imports (at least) the following libraries:
   
 # Scripts in repo
 
-1) Bisulfite Integration
+## 1) Bisulfite Integration
 
 Logic:
 1. **Loads bisulfite bedGraphs** (coverage + methylation counts), merges them by genomic coordinates, and filters CpGs by coverage (default `> 10`)
@@ -34,3 +34,20 @@ Logic:
 
 ```bash
 Rscript Bisulfite_Integration.R /path/to/bisulfite_bedgraphs/
+```
+
+## 2) Coverage
+
+Logic
+1. **Read BAM**
+2. **wResize Tn5 cut sizes**
+3. **Calculte coverage** as peak width / genome size
+4. **Fold Change** vs expected coverage
+
+## Split reads by GP
+Workflows for promoter-centered regions
+
+Logic:
+1. **Read BAM**
+2. **Bin reads** by genomic position
+
